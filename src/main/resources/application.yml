@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:mysql://mysql.broccoliapp.io:3306/broccoli?characterEncoding=UTF-8&useSSL=false&rewriteBatchedStatements=true
+    driver-class-name: com.mysql.jdbc.Driver
+    username: bro
+    password: WUxZEFTxWG8oIeGy23qc!
+  jpa:
+    hibernate:
+      ddl-auto: none
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
