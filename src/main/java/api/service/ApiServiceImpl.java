@@ -22,6 +22,18 @@ public class ApiServiceImpl implements ApiService {
     DieterRepository dieterRepository;
     DieticianRepository dieticianRepository;
     AggreementRepository aggreementRepository;
+    UserRepository userRepository;
+
+
+    @Override
+    public List<UserDTO> getUsers() {
+        return userRepository.findAll().stream().map(UserDTO::new).collect(toList());
+    }
+
+    @Override
+    public List<UserWithDieticianAndDieterDTO> getUsersWithDieticianAndDieter() {
+        return userRepository.findAll().stream().map(UserWithDieticianAndDieterDTO::new).collect(toList());
+    }
 
 
     @Override
@@ -72,6 +84,34 @@ public class ApiServiceImpl implements ApiService {
         aggreement.setStatus(aggreementCreateDTO.getStatus());
 
         return new AggreementWithDieterAndDieticianDTO(aggreementRepository.save(aggreement));
+    }
+
+    @Override
+    public UserDTO saveUser(UserCreateDTO userCreateDTO) {
+        if(userRepository.findByUsername(userCreateDTO.getUsername()).size() > 0){
+            return null;
+        }
+        User user = new User();
+        user.setAddress(userCreateDTO.getAddress());
+        user.setBirthDate(userCreateDTO.getBirthDate());
+        user.setCountry(userCreateDTO.getCountry());
+        user.setEmail(userCreateDTO.getEmail());
+        user.setGender(userCreateDTO.getGender());
+        user.setFacebookId(userCreateDTO.getFacebookId());
+        user.setGoogleId(userCreateDTO.getGoogleId());
+        user.setLanguage(userCreateDTO.getLanguage());
+        user.setLastName(userCreateDTO.getLastName());
+        user.setFirstName(userCreateDTO.getFirstName());
+        user.setPassword(userCreateDTO.getPassword());
+        user.setPhoto(userCreateDTO.getPhoto());
+        user.setSignupOn(userCreateDTO.getSignupOn());
+        user.setState(userCreateDTO.getState());
+        user.setTwitterId(userCreateDTO.getTwitterId());
+        user.setUsername(userCreateDTO.getUsername());
+        user.setZipcode(userCreateDTO.getZipcode());
+
+        return new UserDTO(userRepository.save(user));
+
     }
 
 }

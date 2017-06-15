@@ -27,6 +27,13 @@ public class ApiController {
 
     ApiService apiService;
 
+
+    @GetMapping("/users")
+    public List<UserDTO> getUsers() { return apiService.getUsers();}
+
+    @GetMapping("/users-dieters-dieticians")
+    public List<UserWithDieticianAndDieterDTO> getUsersWithDieticianAndDieter() { return apiService.getUsersWithDieticianAndDieter();}
+
     @GetMapping("/dieters")
     public List<DieterDTO> getDieters() {
         return apiService.getDieters();
@@ -36,7 +43,6 @@ public class ApiController {
     public List<DieticianDTO> getDieticians() {
         return apiService.getDieticians();
     }
-
 
     @GetMapping("/aggreements-dieters-dieticians")
     public List<AggreementWithDieterAndDieticianDTO> getAggreementsWithDietersAndDieticians(){
@@ -51,5 +57,10 @@ public class ApiController {
     @PostMapping("/aggreements")
     public ResponseEntity<?> saveAggreement(@Validated @RequestBody AggreementCreateDTO aggreementCreateDTO) {
         return (apiService.saveAggreement(aggreementCreateDTO) != null ? ok() : badRequest()).build();
+    }
+
+    @PostMapping("/users")
+    public ResponseEntity<?> saveUser(@Validated @RequestBody UserCreateDTO userCreateDTO) {
+        return (apiService.saveUser(userCreateDTO) != null ? ok() : badRequest()).build();
     }
 }

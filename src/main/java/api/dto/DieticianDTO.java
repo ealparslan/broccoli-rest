@@ -1,6 +1,7 @@
 package api.dto;
 
 import api.model.Dietician;
+import api.model.User;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
@@ -12,13 +13,16 @@ import org.springframework.beans.BeanUtils;
 public class DieticianDTO {
 
     int id;
-    int userId;
     boolean isApproved;
     String intro;
     double rate;
     int bankAccountId;
+    int user_id;
+    // User user; user objesini de icinde vermek istersek burayi acmamiz yeterli zira ana dieter objesinde bu bilgi var. DTO ya gelirken kirpiyoruz
+
 
     public DieticianDTO(Dietician dietician){
         BeanUtils.copyProperties(dietician,this,"aggreement");
+        user_id = dietician.getUser().getId();
     }
 }

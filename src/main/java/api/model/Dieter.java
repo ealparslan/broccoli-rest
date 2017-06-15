@@ -4,10 +4,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -20,8 +17,12 @@ public class Dieter implements Serializable{
     @Id
     @GeneratedValue
     int id;
-    int userId;
 
     @OneToMany(mappedBy = "pk.dieter")
     List<Aggreement> aggreements;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    User user;
+
 }
