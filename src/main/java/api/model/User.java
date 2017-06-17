@@ -7,6 +7,7 @@ import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by deniz on 6/14/17.
@@ -41,5 +42,7 @@ public class User implements Serializable {
     Date signupOn;
     String language;
 
+    @OneToMany(mappedBy = "sender,receiver") // TODO we have to find a solution for this
+    List<Message> messages;
 
 }

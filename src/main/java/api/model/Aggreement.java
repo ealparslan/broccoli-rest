@@ -6,8 +6,11 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -21,5 +24,8 @@ public class Aggreement implements Serializable {
     String payPeriod;
     double payAmount;
     int status;
+
+    @OneToMany(mappedBy = "aggreement")
+    List<Payment> payments;
 
 }
