@@ -42,7 +42,7 @@ public class User implements Serializable {
     Date signupOn;
     String language;
 
-    @OneToMany(mappedBy = "sender,receiver") // TODO we have to find a solution for this
+    @OneToMany(mappedBy = "sender") // TODO we have to find a solution for this
     List<Message> messages;
 
 }

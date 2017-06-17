@@ -83,7 +83,8 @@ public class ApiServiceImpl implements ApiService {
         aggreement.setPayPeriod(aggreementCreateDTO.getPayPeriod());
         aggreement.setStatus(aggreementCreateDTO.getStatus());
 
-        return new AggreementWithDieterAndDieticianDTO(aggreementRepository.save(aggreement));
+        AggreementWithDieterAndDieticianDTO dto =new AggreementWithDieterAndDieticianDTO(aggreementRepository.save(aggreement));
+        return dto;
     }
 
     @Override
@@ -110,7 +111,8 @@ public class ApiServiceImpl implements ApiService {
         user.setUsername(userCreateDTO.getUsername());
         user.setZipcode(userCreateDTO.getZipcode());
 
-        return new UserDTO(userRepository.save(user));
+        UserDTO dto = new UserDTO(userRepository.save(user));
+        return dto;
 
     }
 
