@@ -25,6 +25,9 @@ public class Dietician implements Serializable {
     @OneToMany(mappedBy = "pk.dietician")
     List<Aggreement> aggreements;
 
+    @OneToMany(mappedBy = "pk.dietician")
+    List<DieticianSpeciality> dieticianSpecialities;
+
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     User user;
