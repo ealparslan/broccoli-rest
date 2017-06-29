@@ -45,4 +45,8 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "sender") // TODO we have to find a solution for this
     List<Message> messages;
 
+
+    @OneToMany(mappedBy = "user")
+    List<Device> devices;
+
 }
