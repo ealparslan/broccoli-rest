@@ -1,6 +1,7 @@
 package api.service;
 
 import api.dto.*;
+import api.model.BroccoliException;
 
 import java.util.List;
 
@@ -18,8 +19,8 @@ public interface ApiService {
 
     List<AggreementWithDieterAndDieticianDTO> getAgreementsWithDietersAndDieticians(int dieticianId);
 
-    AggreementWithDieterAndDieticianDTO saveAggreement(AggreementCreateDTO aggreementCreateDTO);
+    AggreementWithDieterAndDieticianDTO saveAggreement(AggreementCreateDTO aggreementCreateDTO) throws BroccoliException;
 
-    UserDTO saveUser(UserCreateDTO userCreateDTO);
+    UserDTO saveUser(UserCreateDTO userCreateDTO) throws BroccoliException;
 
 }

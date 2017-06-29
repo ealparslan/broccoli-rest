@@ -29,4 +29,8 @@ public class BankAccount implements Serializable {
 
     Date addedOn;
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "dietician_id")
+    Dietician dietician;
+
 }

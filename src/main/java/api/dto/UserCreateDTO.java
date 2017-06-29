@@ -5,8 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
-import javax.validation.constraints.NotNull;
 import java.util.Date;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by deniz on 6/15/17.
@@ -19,11 +21,11 @@ public class UserCreateDTO {
 
     @NotNull
     int id;
-    @NotNull
+    @NotEmpty
     String username;
-    @NotNull
+    @NotEmpty
     char[] password;
-    @NotNull
+    @NotEmpty
     String firstName;
     String lastName;
     String email;

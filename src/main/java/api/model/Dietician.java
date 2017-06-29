@@ -32,10 +32,5 @@ public class Dietician implements Serializable {
     @JoinColumn(name = "user_id")
     User user;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "bank_account_id")
-    BankAccount bankAccount;
-
-
 
 }

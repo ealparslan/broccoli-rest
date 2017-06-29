@@ -6,6 +6,7 @@ import api.repository.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -58,14 +59,14 @@ public class ApiServiceImpl implements ApiService {
 
 
     @Override
-    public AggreementWithDieterAndDieticianDTO saveAggreement(AggreementCreateDTO aggreementCreateDTO) {
+    public AggreementWithDieterAndDieticianDTO saveAggreement(AggreementCreateDTO aggreementCreateDTO) throws BroccoliException {
         Dieter dieter = dieterRepository.findOne(aggreementCreateDTO.getDieterId());
         if (dieter == null){
-            return null;
+            throw new BroccoliException("dieter cannot be null!", HttpStatus.PRECONDITION_FAILED);
         }
         Dietician dietician = dieticianRepository.findOne(aggreementCreateDTO.getDieticianId());
         if(dietician == null){
-            return null;
+            throw new BroccoliException("dietician cannot be null!", HttpStatus.PRECONDITION_FAILED);
         }
 
 
@@ -74,7 +75,7 @@ public class ApiServiceImpl implements ApiService {
         pk.setDietician(dietician);
         pk.setOfferDate(aggreementCreateDTO.getOfferDate());
         if(aggreementRepository.findOne(pk) != null){
-            return null;
+            throw new BroccoliException("Already have this aggreement!", HttpStatus.CONFLICT);
         }
         Aggreement aggreement = new Aggreement();
         aggreement.setPk(pk);
@@ -83,14 +84,19 @@ public class ApiServiceImpl implements ApiService {
         aggreement.setPayPeriod(aggreementCreateDTO.getPayPeriod());
         aggreement.setStatus(aggreementCreateDTO.getStatus());
 
-        AggreementWithDieterAndDieticianDTO dto =new AggreementWithDieterAndDieticianDTO(aggreementRepository.save(aggreement));
+        AggreementWithDieterAndDieticianDTO dto = null;
+        try {
+            dto = new AggreementWithDieterAndDieticianDTO(aggreementRepository.save(aggreement));
+        } catch (Exception e) {
+            throw new BroccoliException("An error occured while insert!",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
         return dto;
     }
 
     @Override
-    public UserDTO saveUser(UserCreateDTO userCreateDTO) {
+    public UserDTO saveUser(UserCreateDTO userCreateDTO) throws BroccoliException {
         if(userRepository.findByUsername(userCreateDTO.getUsername()).size() > 0){
-            return null;
+            throw new BroccoliException("Already have this user!", HttpStatus.CONFLICT);
         }
         User user = new User();
         user.setAddress(userCreateDTO.getAddress());
@@ -111,7 +117,12 @@ public class ApiServiceImpl implements ApiService {
         user.setUsername(userCreateDTO.getUsername());
         user.setZipcode(userCreateDTO.getZipcode());
 
-        UserDTO dto = new UserDTO(userRepository.save(user));
+        UserDTO dto = null;
+        try {
+            dto = new UserDTO(userRepository.save(user));
+        } catch (Exception e) {
+            throw new BroccoliException("An error occured while insert!",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
         return dto;
 
     }

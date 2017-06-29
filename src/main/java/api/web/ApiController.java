@@ -2,19 +2,22 @@ package api.web;
 
 
 import api.dto.*;
+import api.model.Aggreement;
+import api.model.BroccoliException;
 import api.model.Dietician;
+import api.model.ErrorResponse;
 import api.service.ApiService;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 import static org.springframework.http.ResponseEntity.badRequest;
@@ -56,13 +59,22 @@ public class ApiController {
 
     //region POST OPERATIONS
     @PostMapping("/aggreements")
-    public ResponseEntity<?> saveAggreement(@Validated @RequestBody AggreementCreateDTO aggreementCreateDTO) {
-        return (apiService.saveAggreement(aggreementCreateDTO) != null ? ok() : badRequest()).build();
+    public ResponseEntity<?> saveAggreement(@Valid @RequestBody AggreementCreateDTO aggreementCreateDTO) throws BroccoliException, URISyntaxException {
+        AggreementWithDieterAndDieticianDTO aggreementWithDieterAndDieticianDTO = apiService.saveAggreement(aggreementCreateDTO);
+        return ResponseEntity.created(new URI("/aggreements/dieters-dieticians/"+ aggreementWithDieterAndDieticianDTO.getDieticianId())).build();
     }
 
     @PostMapping("/users")
-    public ResponseEntity<?> saveUser(@Validated @RequestBody UserCreateDTO userCreateDTO) {
-        return (apiService.saveUser(userCreateDTO) != null ? ok() : badRequest()).build();
+    public ResponseEntity<?> saveUser(@Valid @RequestBody UserCreateDTO userCreateDTO) throws BroccoliException, URISyntaxException {
+        UserDTO userDTO = apiService.saveUser(userCreateDTO);
+        return ResponseEntity.created(new URI("/users/"+ userDTO.getUsername())).build();
     }
     //endregion
+
+    @ExceptionHandler(BroccoliException.class)
+    public ResponseEntity<ErrorResponse> exceptionHandler(BroccoliException ex) {
+        ErrorResponse error = new ErrorResponse();
+        error.setMessage(ex.getMessage());
+        return new ResponseEntity<ErrorResponse>(error, ex.getErrorCode());
+    }
 }
