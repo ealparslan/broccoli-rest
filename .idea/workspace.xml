@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b432326a-a26a-4e57-879d-7765c59052dc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/api/model/exception/BroccoliNotFoundException.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/api/model/BroccoliException.java" afterPath="$PROJECT_DIR$/src/main/java/api/model/exception/BroccoliException.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/api/model/ErrorResponse.java" afterPath="$PROJECT_DIR$/src/main/java/api/model/exception/ErrorResponse.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/api/model/ExceptionControllerAdvice.java" afterPath="$PROJECT_DIR$/src/main/java/api/model/exception/ExceptionControllerAdvice.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/api/model/Message.java" afterPath="$PROJECT_DIR$/src/main/java/api/model/exception/Message.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/api/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/api/model/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/api/repository/DieterRepository.java" afterPath="$PROJECT_DIR$/src/main/java/api/repository/DieterRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/api/service/ApiService.java" afterPath="$PROJECT_DIR$/src/main/java/api/service/ApiService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/api/service/ApiServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/api/service/ApiServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/api/web/ApiController.java" afterPath="$PROJECT_DIR$/src/main/java/api/web/ApiController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -1381,7 +1370,7 @@
       <workItem from="1497439144234" duration="32000" />
       <workItem from="1497439212000" duration="18352000" />
       <workItem from="1497697069678" duration="4269000" />
-      <workItem from="1498754760180" duration="14187000" />
+      <workItem from="1498754760180" duration="14224000" />
     </task>
     <task id="LOCAL-00001" summary="User management icin gerekli en temel get ve post implement edildi. #4 ve #5 halloldu. Kullanimlar icin POSTMAN katalogu yayinlayacagim.">
       <created>1497519598393</created>
@@ -1432,11 +1421,18 @@
       <option name="project" value="LOCAL" />
       <updated>1498774957053</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="routing changes&#10;new DTO s&#10;new services">
+      <created>1498791873173</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1498791873173</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52019000" />
+    <option name="totallyTimeSpent" value="52056000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -1489,7 +1485,8 @@
     <MESSAGE value="Speciality and DieticianSpeciality model classes added" />
     <MESSAGE value="new model classes" />
     <MESSAGE value="exception handling and status messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="exception handling and status messages" />
+    <MESSAGE value="routing changes&#10;new DTO s&#10;new services" />
+    <option name="LAST_COMMIT_MESSAGE" value="routing changes&#10;new DTO s&#10;new services" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
