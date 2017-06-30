@@ -143,8 +143,7 @@ public class ApiServiceImpl implements ApiService {
         user.setFacebookId(userCreateDTO.getFacebookId());
         user.setGoogleId(userCreateDTO.getGoogleId());
         user.setLanguage(userCreateDTO.getLanguage());
-        user.setLastName(userCreateDTO.getLastName());
-        user.setFirstName(userCreateDTO.getFirstName());
+        user.setFullName(userCreateDTO.getFullName());
         user.setPassword(userCreateDTO.getPassword());
         user.setPhoto(userCreateDTO.getPhoto());
         user.setSignupOn(userCreateDTO.getSignupOn());

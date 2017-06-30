@@ -21,8 +21,7 @@ public class UserDTO {
     int id;
     String username;
     char[] password;
-    String firstName;
-    String lastName;
+    String fullName;
     String email;
     String googleId;
     String facebookId;

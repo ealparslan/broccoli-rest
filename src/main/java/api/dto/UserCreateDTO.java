@@ -26,8 +26,7 @@ public class UserCreateDTO {
     @NotEmpty
     char[] password;
     @NotEmpty
-    String firstName;
-    String lastName;
+    String fullName;
     String email;
     String googleId;
     String facebookId;
