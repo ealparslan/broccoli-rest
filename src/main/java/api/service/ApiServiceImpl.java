@@ -2,8 +2,8 @@ package api.service;
 
 import api.dto.*;
 import api.model.*;
-import api.model.exception.BroccoliException;
-import api.model.exception.BroccoliNotFoundException;
+import api.exception.BroccoliException;
+import api.exception.BroccoliNotFoundException;
 import api.repository.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package api.model.exception;
+package api.exception;
 
 import api.model.User;
 import lombok.AccessLevel;

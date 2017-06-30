@@ -2,9 +2,9 @@ package api.web;
 
 
 import api.dto.*;
-import api.model.exception.BroccoliException;
-import api.model.exception.BroccoliNotFoundException;
-import api.model.exception.ErrorResponse;
+import api.exception.BroccoliException;
+import api.exception.BroccoliNotFoundException;
+import api.exception.ErrorResponse;
 import api.service.ApiService;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

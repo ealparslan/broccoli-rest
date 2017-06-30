@@ -41,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(restAuthenticationEntryPoint)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/*").authenticated()
+                .antMatchers("/").authenticated() // TODO add * to enable authentication
                 .and()
                 .formLogin()
                 .successHandler(authenticationSuccessHandler)

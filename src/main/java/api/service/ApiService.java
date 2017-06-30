@@ -1,8 +1,8 @@
 package api.service;
 
 import api.dto.*;
-import api.model.exception.BroccoliException;
-import api.model.exception.BroccoliNotFoundException;
+import api.exception.BroccoliException;
+import api.exception.BroccoliNotFoundException;
 
 import java.util.List;
 

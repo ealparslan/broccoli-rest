@@ -1,4 +1,4 @@
-package api.model.exception;
+package api.exception;
 
 /**
  * Created by deniz on 6/29/17.
