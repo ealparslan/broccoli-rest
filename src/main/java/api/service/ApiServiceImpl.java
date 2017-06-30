@@ -2,6 +2,8 @@ package api.service;
 
 import api.dto.*;
 import api.model.*;
+import api.model.exception.BroccoliException;
+import api.model.exception.BroccoliNotFoundException;
 import api.repository.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -32,8 +34,28 @@ public class ApiServiceImpl implements ApiService {
     }
 
     @Override
+    public UserDTO getUser(int userId) throws BroccoliException {
+        User user = userRepository.findOne(userId);
+        if (user == null)   throw new BroccoliNotFoundException();
+        return new UserDTO(user);
+    }
+
+    @Override
+    public UserDTO getUser(String userName) throws BroccoliException {
+        List<User> users = userRepository.findByUsername(userName);
+        if (users == null || users.isEmpty())   throw new BroccoliNotFoundException();
+        return new UserDTO(users.get(0));    }
+
+    @Override
     public List<UserWithDieticianAndDieterDTO> getUsersWithDieticianAndDieter() {
         return userRepository.findAll().stream().map(UserWithDieticianAndDieterDTO::new).collect(toList());
+    }
+
+    @Override
+    public UserWithDieticianAndDieterDTO getUserWithDieticianAndDieter(int userId) throws BroccoliNotFoundException {
+        User user = userRepository.findOne(userId);
+        if (user == null)   throw new BroccoliNotFoundException();
+        return new UserWithDieticianAndDieterDTO(user);
     }
 
 
@@ -43,8 +65,22 @@ public class ApiServiceImpl implements ApiService {
     }
 
     @Override
+    public DieterDTO getDieter(int dieterId) throws BroccoliException {
+        Dieter dieter = dieterRepository.findOne(dieterId);
+        if (dieter == null) throw new BroccoliNotFoundException();
+        return new DieterDTO(dieter);
+    }
+
+    @Override
     public List<DieticianDTO> getDieticians() {
         return dieticianRepository.findAll().stream().map(DieticianDTO::new).collect(toList());
+    }
+
+    @Override
+    public DieticianDTO getDietician(int dieticianId) throws BroccoliException {
+        Dietician dietician = dieticianRepository.findOne(dieticianId);
+        if(dietician == null)   throw new BroccoliNotFoundException();
+        return new DieticianDTO(dietician);
     }
 
     @Override

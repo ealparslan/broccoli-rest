@@ -1,7 +1,8 @@
 package api.service;
 
 import api.dto.*;
-import api.model.BroccoliException;
+import api.model.exception.BroccoliException;
+import api.model.exception.BroccoliNotFoundException;
 
 import java.util.List;
 
@@ -9,11 +10,21 @@ public interface ApiService {
 
     List<UserDTO> getUsers();
 
+    UserDTO getUser(int userId) throws BroccoliException;
+
+    UserDTO getUser(String userName) throws BroccoliException;
+
     List<UserWithDieticianAndDieterDTO> getUsersWithDieticianAndDieter();
+
+    UserWithDieticianAndDieterDTO getUserWithDieticianAndDieter(int userId) throws BroccoliNotFoundException;
 
     List<DieterDTO> getDieters();
 
+    DieterDTO getDieter(int dieterId) throws BroccoliException;
+
     List<DieticianDTO> getDieticians();
+
+    DieticianDTO getDietician(int dieticianId) throws BroccoliException;
 
     List<AggreementWithDieterAndDieticianDTO> getAgreementsWithDietersAndDieticians();
 

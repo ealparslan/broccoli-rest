@@ -1,4 +1,4 @@
-package api.model;
+package api.model.exception;
 
 import org.springframework.http.HttpStatus;
 

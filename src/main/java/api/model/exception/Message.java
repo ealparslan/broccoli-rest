@@ -1,5 +1,6 @@
-package api.model;
+package api.model.exception;
 
+import api.model.User;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
