@@ -28,7 +28,7 @@ public class ApiController {
     @GetMapping("/users")
     public List<UserDTO> getUsers() { return apiService.getUsers();}
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("/user/id/{userId}")
     public UserDTO getUser(@PathVariable int userId) throws BroccoliException {
         return apiService.getUser(userId);
     }
@@ -43,7 +43,7 @@ public class ApiController {
         return apiService.getUsersWithDieticianAndDieter();
     }
 
-    @GetMapping("/user-dieters-dieticians/{userId}")
+    @GetMapping("/user-dieters-dieticians/id/{userId}")
     public UserWithDieticianAndDieterDTO getUserWithDieticianAndDieter(@PathVariable int userId) throws BroccoliNotFoundException {
         return apiService.getUserWithDieticianAndDieter(userId);
     }
@@ -54,7 +54,7 @@ public class ApiController {
         return apiService.getDieters();
     }
 
-    @GetMapping("/dieter/{dieterId}")
+    @GetMapping("/dieter/id/{dieterId}")
     public DieterDTO getDieter(@PathVariable int dieterId) throws BroccoliException {
         return apiService.getDieter(dieterId);
     }
@@ -64,7 +64,7 @@ public class ApiController {
         return apiService.getDieticians();
     }
 
-    @GetMapping("/dietician/{dieticianId}")
+    @GetMapping("/dietician/id/{dieticianId}")
     public DieticianDTO getDietician(@PathVariable int dieticianId) throws BroccoliException {
         return apiService.getDietician(dieticianId);
     }
