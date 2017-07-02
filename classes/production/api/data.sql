@@ -1,10 +1,7 @@
-INSERT INTO seller (name, permit_no) VALUES ('xxxx', 123);
-INSERT INTO seller (name, permit_no) VALUES ('yyy', 4444564);
+select 1;
 
-INSERT INTO buyer (age, is_active, name) VALUES (20, true, 'aaa');
-INSERT INTO buyer (age, is_active, name) VALUES (30, false, 'bbb');
-
-INSERT INTO sale (sell_date, amount, buyer_id, seller_id) VALUES ('2017-06-10 01:38:05', 3, 1, 1);
-INSERT INTO sale (sell_date, amount, buyer_id, seller_id) VALUES ('2017-06-10 04:38:12', 4, 1, 2);
-INSERT INTO sale (sell_date, amount, buyer_id, seller_id) VALUES ('2017-06-10 01:38:52', 5, 2, 1);
-INSERT INTO sale (sell_date, amount, buyer_id, seller_id) VALUES ('2017-06-10 01:39:52', 6, 2, 2);
+INSERT INTO `user` VALUES (1,'deneme','2010-01-01 00:00:00','US','ealparslan@gmail.com',NULL,'Erhan Alparslan','M','ealparslan','Turkish',NULL,'deneme',NULL,'2017-01-01 00:00:00','CA',NULL,'ealparslan',95117);
+INSERT INTO `user` VALUES (2,'dkdekdj','2010-01-01 00:00:00','US','ouuuz@gmail.com',NULL,'Oguzhan Topgul','F','oguzzz','English',NULL,'deneme',NULL,'2010-01-01 00:00:00','CA',NULL,'oguzhan',9443);
+INSERT INTO `dieter` VALUES (1,1);
+INSERT INTO `dietician` VALUES (1,3243,'dkfjkdfjk','',3,2);
+INSERT INTO `aggreement` VALUES ('2010-01-01 00:00:00','2010-01-03 00:00:00',121,'month',2,1,1);
