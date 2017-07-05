@@ -22,12 +22,11 @@ public class UserCreateDTO {
     @NotNull
     int id;
     @NotEmpty
-    String username;
+    String email;
     @NotEmpty
     char[] password;
     @NotEmpty
     String fullName;
-    String email;
     String googleId;
     String facebookId;
     String twitterId;

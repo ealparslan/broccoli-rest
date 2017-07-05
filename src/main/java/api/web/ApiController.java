@@ -33,9 +33,9 @@ public class ApiController {
         return apiService.getUser(userId);
     }
 
-    @GetMapping("/user/{userName}")
-    public UserDTO getUser(@PathVariable String userName) throws BroccoliException {
-        return apiService.getUser(userName);
+    @GetMapping("/user/{email}/")
+    public UserDTO getUser(@PathVariable String email) throws BroccoliException {
+        return apiService.getUser(email);
     }
 
     @GetMapping("/users-dieters-dieticians")
@@ -87,7 +87,7 @@ public class ApiController {
     @PostMapping("/users")
     public ResponseEntity<?> saveUser(@Valid @RequestBody UserCreateDTO userCreateDTO) throws BroccoliException, URISyntaxException {
         UserDTO userDTO = apiService.saveUser(userCreateDTO);
-        return ResponseEntity.created(new URI("/users/"+ userDTO.getUsername())).build();
+        return ResponseEntity.created(new URI("/user/"+ userDTO.getEmail()+"/")).build();
     }
     //endregion
 

@@ -24,10 +24,9 @@ public class User implements Serializable {
     @GeneratedValue
     int id;
     @Column(unique = true)
-    String username;
+    String email;
     char[] password;
     String fullName;
-    String email;
     String googleId;
     String facebookId;
     String twitterId;

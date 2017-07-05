@@ -41,8 +41,8 @@ public class ApiServiceImpl implements ApiService {
     }
 
     @Override
-    public UserDTO getUser(String userName) throws BroccoliException {
-        List<User> users = userRepository.findByUsername(userName);
+    public UserDTO getUser(String email) throws BroccoliException {
+        List<User> users = userRepository.findByEmail(email);
         if (users == null || users.isEmpty())   throw new BroccoliNotFoundException();
         return new UserDTO(users.get(0));    }
 
@@ -131,7 +131,7 @@ public class ApiServiceImpl implements ApiService {
 
     @Override
     public UserDTO saveUser(UserCreateDTO userCreateDTO) throws BroccoliException {
-        if(userRepository.findByUsername(userCreateDTO.getUsername()).size() > 0){
+        if(userRepository.findByEmail(userCreateDTO.getEmail()).size() > 0){
             throw new BroccoliException("Already have this user!", HttpStatus.CONFLICT);
         }
         User user = new User();
@@ -149,7 +149,6 @@ public class ApiServiceImpl implements ApiService {
         user.setSignupOn(userCreateDTO.getSignupOn());
         user.setState(userCreateDTO.getState());
         user.setTwitterId(userCreateDTO.getTwitterId());
-        user.setUsername(userCreateDTO.getUsername());
         user.setZipcode(userCreateDTO.getZipcode());
 
         UserDTO dto = null;

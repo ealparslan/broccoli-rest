@@ -21,10 +21,9 @@ import java.util.Date;
 public class UserWithDieticianAndDieterDTO {
 
     int id;
-    String username;
+    String email;
     char[] password;
     String fullName;
-    String email;
     String googleId;
     String facebookId;
     String twitterId;
