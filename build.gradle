@@ -19,7 +19,7 @@ apply plugin: 'war'
 
 war {
 	baseName = 'broccoliapi'
-	version =  '0.5.0'
+	version =  ''
 }
 
 

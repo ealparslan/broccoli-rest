@@ -19,6 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @RestController
+@RequestMapping
 public class ApiController {
 
     ApiService apiService;
@@ -49,11 +50,13 @@ public class ApiController {
     }
     //endregion
 
+    @CrossOrigin
     @GetMapping("/dieters")
     public List<DieterDTO> getDieters() {
         return apiService.getDieters();
     }
 
+    @CrossOrigin
     @GetMapping("/dieter/id/{dieterId}")
     public DieterDTO getDieter(@PathVariable int dieterId) throws BroccoliException {
         return apiService.getDieter(dieterId);

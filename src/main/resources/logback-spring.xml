@@ -23,16 +23,16 @@
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
 
     <springProfile name="!production">
-        <root level="error">
+        <root level="debug">
             <appender-ref ref="CONSOLE" />
         </root>
-        <logger name="org.springframework.web" level="ERROR" additivity="false">
+        <logger name="org.springframework.web" level="debug" additivity="false">
             <appender-ref ref="CONSOLE"/>
         </logger>
-        <logger name="org.hibernate" level="ERROR" additivity="false">
+        <logger name="org.hibernate" level="debug" additivity="false">
             <appender-ref ref="CONSOLE"/>
         </logger>
-        <logger name="api.ApiApplication" level="DEBUG" additivity="false">
+        <logger name="api.ApiApplication" level="debug" additivity="false">
             <appender-ref ref="CONSOLE"/>
         </logger>
     </springProfile>

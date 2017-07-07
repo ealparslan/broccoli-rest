@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: "development"
+    active: "production"
 
 ---
 
@@ -11,6 +11,9 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: bro
     password: WUxZEFTxWG8oIeGy23qc!
+    tomcat:
+      testOnBorrow: true
+      validationQuery: SELECT 1
   jpa:
       hibernate:
         ddl-auto: create-drop
@@ -28,9 +31,11 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: bro
     password: WUxZEFTxWG8oIeGy23qc!
+    testOnBorrow: true
+    validationQuery: SELECT 1
   jpa:
       hibernate:
-        ddl-auto: none
+        ddl-auto: create-drop
         show_sql: false
   jackson:
       serialization:
