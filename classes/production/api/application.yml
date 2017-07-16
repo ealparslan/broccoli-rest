@@ -1,22 +1,42 @@
 spring:
+  profiles:
+    active: "production"
+
+---
+
+spring:
+  profiles: development
   datasource:
     url: jdbc:mysql://mysql.broccoliapp.io:3306/broccoli2?characterEncoding=UTF-8&useSSL=false&rewriteBatchedStatements=true
     driver-class-name: com.mysql.jdbc.Driver
     username: bro
     password: WUxZEFTxWG8oIeGy23qc!
+    tomcat:
+      testOnBorrow: true
+      validationQuery: SELECT 1
   jpa:
-    hibernate:
-      ddl-auto: create-drop
-      show_sql: true
+      hibernate:
+        ddl-auto: create
+        show_sql: true
   jackson:
-    serialization:
-      WRITE_DATES_AS_TIMESTAMPS: false
-  logging:
-    file: logs/dev_app.log
-    pattern:
-      console: "%d %-5level %logger : %msg%n"
-      file: "%d %-5level [%thread] %logger : %msg%n"
-    level:
-      org.springframework.web: ERROR
-      guru.springframework.controllers: ERROR
-      org.hibernate: ERROR
+      serialization:
+        WRITE_DATES_AS_TIMESTAMPS: false
+
+---
+
+spring:
+  profiles: production
+  datasource:
+    url: jdbc:mysql://mysql.broccoliapp.io:3306/broccoli?characterEncoding=UTF-8&useSSL=false&rewriteBatchedStatements=true
+    driver-class-name: com.mysql.jdbc.Driver
+    username: bro
+    password: WUxZEFTxWG8oIeGy23qc!
+    testOnBorrow: true
+    validationQuery: SELECT 1
+  jpa:
+      hibernate:
+        ddl-auto: none
+        show_sql: false
+  jackson:
+      serialization:
+        WRITE_DATES_AS_TIMESTAMPS: false

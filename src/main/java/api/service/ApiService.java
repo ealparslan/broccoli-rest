@@ -24,6 +24,8 @@ public interface ApiService {
 
     List<DieticianDTO> getDieticians();
 
+    List<DieticianDetailedDTO> getDieticiansDetailed();
+
     DieticianDTO getDietician(int dieticianId) throws BroccoliException;
 
     List<AggreementWithDieterAndDieticianDTO> getAgreementsWithDietersAndDieticians();

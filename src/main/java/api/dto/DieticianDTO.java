@@ -16,7 +16,6 @@ public class DieticianDTO {
     boolean isApproved;
     String intro;
     double rate;
-    int bankAccountId;
     int user_id;
     // User user; user objesini de icinde vermek istersek burayi acmamiz yeterli zira ana dieter objesinde bu bilgi var. DTO ya gelirken kirpiyoruz
 

@@ -67,6 +67,11 @@ public class ApiController {
         return apiService.getDieticians();
     }
 
+    @GetMapping("/dieticiansdetailed")
+    public List<DieticianDetailedDTO> getDieticiansDetailed() {
+        return apiService.getDieticiansDetailed();
+    }
+
     @GetMapping("/dietician/id/{dieticianId}")
     public DieticianDTO getDietician(@PathVariable int dieticianId) throws BroccoliException {
         return apiService.getDietician(dieticianId);

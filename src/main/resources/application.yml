@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: "production"
+    active: "development"
 
 ---
 
@@ -16,7 +16,7 @@ spring:
       validationQuery: SELECT 1
   jpa:
       hibernate:
-        ddl-auto: create-drop
+        ddl-auto: create
         show_sql: true
   jackson:
       serialization:
@@ -35,7 +35,7 @@ spring:
     validationQuery: SELECT 1
   jpa:
       hibernate:
-        ddl-auto: create-drop
+        ddl-auto: create
         show_sql: false
   jackson:
       serialization:

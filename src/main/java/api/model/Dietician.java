@@ -20,7 +20,6 @@ public class Dietician implements Serializable {
     boolean isApproved;
     String intro;
     double rate;
-    int bankAccountId;
 
     @OneToMany(mappedBy = "pk.dietician")
     List<Aggreement> aggreements;

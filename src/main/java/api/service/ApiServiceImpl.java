@@ -77,6 +77,11 @@ public class ApiServiceImpl implements ApiService {
     }
 
     @Override
+    public List<DieticianDetailedDTO> getDieticiansDetailed() {
+        return dieticianRepository.findAll().stream().map(DieticianDetailedDTO::new).collect(toList());
+    }
+
+    @Override
     public DieticianDTO getDietician(int dieticianId) throws BroccoliException {
         Dietician dietician = dieticianRepository.findOne(dieticianId);
         if(dietician == null)   throw new BroccoliNotFoundException();
