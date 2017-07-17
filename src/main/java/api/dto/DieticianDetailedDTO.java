@@ -22,6 +22,7 @@ public class DieticianDetailedDTO {
     String intro;
     double rate;
     List<Speciality> specialities = new ArrayList<>();
+    User user;
 
 
     public DieticianDetailedDTO(Dietician dietician){
@@ -29,6 +30,7 @@ public class DieticianDetailedDTO {
         for (DieticianSpeciality dieticianSpeciality:dietician.getDieticianSpecialities()) {
             specialities.add(new Speciality(dieticianSpeciality.getPk().getSpeciality().getTitle(),dieticianSpeciality.getFee()));
         }
+        this.user = new User(dietician.getUser().getFullName(),dietician.getUser().getCountry(),dietician.getUser().getPhoto(),dietician.getUser().getState());
     }
 
     @Data
@@ -40,6 +42,24 @@ public class DieticianDetailedDTO {
         public Speciality(String _title, float _fee){
             title = _title;
             fee = _fee;
+        }
+
+    }
+
+    @Data
+    @FieldDefaults(level = AccessLevel.PRIVATE)
+    class User{
+        String fullName;
+        String country;
+        String state;
+        byte[] photo;
+
+
+        public User(String _fullName, String _country,byte[] _photo, String _state){
+            fullName = _fullName;
+            country = _country;
+            photo = _photo;
+            state = _state;
         }
 
     }
