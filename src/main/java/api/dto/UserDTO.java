@@ -32,7 +32,7 @@ public class UserDTO {
     String country;
     String gender;
     Date birthDate;
-    byte[] photo;
+    String photo;
     Date signupOn;
     String language;
 

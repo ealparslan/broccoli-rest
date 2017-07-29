@@ -14,7 +14,7 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="api_main" />
-          <element id="dir-copy" path="$PROJECT_DIR$/build/resources/main" />
+          <element id="dir-copy" path="$PROJECT_DIR$/out/production/resources" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter-data-jpa:1.5.4.RELEASE" />
@@ -22,6 +22,7 @@
           <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter-security:1.5.4.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter-logging:1.5.4.RELEASE" />
           <element id="library" level="project" name="Gradle: org.codehaus.janino:janino:2.7.8" />
+          <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-configuration-processor:1.5.4.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter:1.5.4.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-starter-aop:1.5.4.RELEASE" />
           <element id="library" level="project" name="Gradle: mysql:mysql-connector-java:5.1.42" />
@@ -43,6 +44,7 @@
           <element id="library" level="project" name="Gradle: org.slf4j:jul-to-slf4j:1.7.25" />
           <element id="library" level="project" name="Gradle: org.slf4j:log4j-over-slf4j:1.7.25" />
           <element id="library" level="project" name="Gradle: org.codehaus.janino:commons-compiler:2.7.8" />
+          <element id="library" level="project" name="Gradle: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" />
           <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot:1.5.4.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework.boot:spring-boot-autoconfigure:1.5.4.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-core:4.3.9.RELEASE" />

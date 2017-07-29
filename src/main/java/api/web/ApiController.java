@@ -6,15 +6,28 @@ import api.exception.BroccoliException;
 import api.exception.BroccoliNotFoundException;
 import api.exception.ErrorResponse;
 import api.service.ApiService;
+import api.utils.storage.StorageFileNotFoundException;
+import api.utils.storage.StorageService;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import javax.validation.Valid;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -23,6 +36,7 @@ import java.util.List;
 public class ApiController {
 
     ApiService apiService;
+    StorageService storageService;
 
 
     //region USER GET
@@ -105,4 +119,47 @@ public class ApiController {
         error.setMessage(ex.getMessage());
         return new ResponseEntity<ErrorResponse>(error, ex.getErrorCode());
     }
+
+    // region storage service
+/*    @GetMapping("/files")
+    public String listUploadedFiles(Model model) throws IOException {
+
+        model.addAttribute("files", storageService
+                .loadAll()
+                .map(path ->
+                        MvcUriComponentsBuilder
+                                .fromMethodName(ApiController.class, "serveFile", path.getFileName().toString())
+                                .build().toString())
+                .collect(Collectors.toList()));
+
+        return "uploadForm";
+    }*/
+
+    @GetMapping("/files/{filename:.+}")
+    @ResponseBody
+    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
+
+        Resource file = storageService.loadAsResource(filename);
+        return ResponseEntity
+                .ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\""+file.getFilename()+"\"")
+                .body(file);
+    }
+
+    @PostMapping("/files")
+    public ResponseEntity<?> handleFileUpload(@RequestParam("file") MultipartFile file) throws URISyntaxException {
+
+        String extension = StringUtils.cleanPath(file.getOriginalFilename().substring(file.getOriginalFilename().indexOf('.')));
+        String fileName = "user_" + java.util.UUID.randomUUID() + extension;
+        storageService.store(file,fileName);
+        return ResponseEntity.created(new URI("/files/"+ fileName)).build();
+
+    }
+
+    @ExceptionHandler(StorageFileNotFoundException.class)
+    public ResponseEntity handleStorageFileNotFound(StorageFileNotFoundException exc) {
+        return ResponseEntity.notFound().build();
+    }
+    //endregion
+
 }

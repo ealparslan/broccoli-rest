@@ -52,10 +52,10 @@ public class DieticianDetailedDTO {
         String fullName;
         String country;
         String state;
-        byte[] photo;
+        String photo;
 
 
-        public User(String _fullName, String _country,byte[] _photo, String _state){
+        public User(String _fullName, String _country,String _photo, String _state){
             fullName = _fullName;
             country = _country;
             photo = _photo;

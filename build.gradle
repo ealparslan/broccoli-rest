@@ -39,7 +39,7 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-security")
 	compile("org.springframework.boot:spring-boot-starter-logging")
 	compile("org.codehaus.janino:janino")
-
+	compile( "org.springframework.boot:spring-boot-configuration-processor")
 	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 	runtime('mysql:mysql-connector-java')
 	compileOnly('org.projectlombok:lombok')

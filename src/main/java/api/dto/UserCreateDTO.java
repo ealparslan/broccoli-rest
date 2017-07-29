@@ -37,7 +37,7 @@ public class UserCreateDTO {
     String country;
     String gender;
     Date birthDate;
-    byte[] photo;
+    String photo;
     Date signupOn;
     String language;
 }
